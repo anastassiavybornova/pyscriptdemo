@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+<head>
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+ 
+<body>
+
+<py-script>
+colors = ["green", "blue", "red", "black", "orange"]
+numbers = [i for i in range(1,len(colors)+1)]
+mydata = dict(zip(numbers, colors))
+
+def my_search_function(*args, **kwargs):
+
+    mynumber = int(Element('demouserinput').element.value)
+    
+    if mynumber not in mydata.keys():
+        Element('demooutput').element.innerText = "Trying to be sneaky?"
+        ans = "tbs"
+    else:
+        mycolor = mydata[mynumber]
+        Element('demooutput').element.innerText = "Your favourite color must be " + str(mycolor)
+        ans = "col"
+    
+    return ans
+
+</py-script>
+ 
+<div>Tell us your favourite number from 1 to 5, and we'll tell you your favourite color!</div>
+<input type="text" id="demouserinput"/>
+<button id="submit-button" type="submit" pys-onClick="my_search_function">OK</button>
+<div id="demooutput"></div>
+
+</body>
+
+</html>
